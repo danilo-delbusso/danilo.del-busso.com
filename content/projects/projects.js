@@ -24,7 +24,7 @@ export default [
     title: "traffiK",
     path: "https://github.com/danilo-delbusso/trafficK",
     description:
-      "AI learns how to play flappy bird using neural networks and genetic algorithms",
+      "A train dwell time visual diagnostic tool using SWR dwelling time",
     tags: ["<a href='https://devpost.com/software/traffik'>🥉 3rd Place Hacktrain 5.0</a>","R", "Python&nbsp;<i class='fab fa-python'></i>", "JavaScript&nbsp;<i class='fab fa-js-square'></i>"],
   },
   {
@@ -38,7 +38,7 @@ export default [
     title: "Toguz Korgol",
     path: "https://github.com/danilo-delbusso/toguz-korgol-java",
     description:
-      "A Java implementation of the <a href='https://en.wikipedia.org/wiki/Toguz_korgol>Toguz Korgol</a> game with a simple AI opponent.",
+      "A Java implementation of the <a href='https://en.wikipedia.org/wiki/Toguz_korgol'>Toguz Korgol</a> game with a simple AI opponent.",
     tags: ["Game","Java <i class='fab fa-java'></i>","Gradle"],
   },
 ]
