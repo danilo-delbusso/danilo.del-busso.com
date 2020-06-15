@@ -24,7 +24,7 @@ const ContactForm = () => {
   const [message, setMessage] = React.useState("")
 
   const sendToFormHandler = () => {
-    return fetch("https://submit-form.com/v19LBL6qXhQA4XBx8cHfn", {
+    return fetch("https://submit-form.com/Sx7w1xSNbKzGrx5ieV7O2", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
