@@ -1,13 +1,13 @@
-# adrianperea.dev
+# danilodelbusso.dx.am
 
-My personal website. Made with love using Gatsby and React.js
+My personal website.
 
 ## Acknowledgements
 
 + Pearl Santos 💖 - For the everlasting support and design advice
 + Gatsby Team - [Gatsby Blog Starter](https://github.com/gatsbyjs/gatsby-starter-blog)
 
-## Author
+## Original Author
 + [Adrian Perea](https://www.adrianperea.dev)
 
 ## License
