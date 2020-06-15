@@ -20,7 +20,7 @@ const Bio = () => {
             lastName
           }
           social {
-            twitter
+            github
           }
         }
       }
@@ -39,8 +39,8 @@ const Bio = () => {
         Hi! I'm {author.firstName}. I'm a software engineer, and I work hard to
         provide helpful and highly intuitive content for free. If you like what
         you read, please consider{" "}
-        <a href={`https://twitter.com/${social.twitter}`}>following</a> me on
-        Twitter. Hope to see you again next time!
+        <a href={`https://github.com/${social.github}`}>following</a> me on
+        Github. Hope to see you again next time!
       </p>
     </div>
   )

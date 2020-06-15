@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import projectsStyles from "../css/projects.module.css"
 import Item from "../components/item"
 
 const Blog = ({ data }) => {
@@ -17,7 +18,18 @@ const Blog = ({ data }) => {
             title={title}
             path={node.fields.slug}
             isInternal={true}
-            headerContent={<small>{node.frontmatter.date}</small>}
+            headerContent={
+              <>
+                <span className={projectsStyles.tagContainer}>
+                  {node.frontmatter.tags.split('_').map(tag => (
+                    <small
+                      key={`${node.frontmatter.title}_${tag}`}
+                      dangerouslySetInnerHTML={{ __html: tag }}
+                    ></small>
+                  ))}
+                </span><small>{node.frontmatter.date}</small>
+              </>
+            }
             description={node.frontmatter.description || node.excerpt}
           />
         )
@@ -58,6 +70,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
           }
         }
       }
