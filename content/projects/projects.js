@@ -1,6 +1,6 @@
 export default [
   {
-    title: "GA Phrase Guesser",
+    title: "Alpava",
     path: "https://github.com/adrianmarkperea/phrase-guesser-demo",
     description:
       "A phrase guesser used to illustrate genetic algorithms. Written using React and Genie.js",

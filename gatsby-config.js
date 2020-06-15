@@ -1,31 +1,31 @@
 module.exports = {
   siteMetadata: {
-    title: `Adrian Perea`,
-    defaultTitle: `Adrian Perea's Dev Blog`,
+    title: `Danilo Del Busso`,
+    defaultTitle: `Danilo Del Busso's Dev Portfolio`,
     author: {
-      name: `Adrian Mark Clave Perea`,
-      firstName: `Adrian`,
-      lastName: `Perea`,
+      name: `Danilo Del Busso`,
+      firstName: `Danilo`,
+      lastName: `Del Busso`,
       descriptions: [
         `and i write applications for fun`,
-        `and i do artificial intelligence`,
+        `and i am a CompSci student`,
       ],
     },
-    description: `Tutorials on AI, Edge Computing, and the Modern Web.`,
-    siteUrl: `https://www.adrianperea.dev/`,
+    description: `Danilo Del Busso's Dev Portfolio`,
+    siteUrl: `https://www.danilodelbusso.dx.am/`,
     social: {
-      twitter: `adrianmarkperea`,
-      github: `adrianmarkperea`,
-      linkedin: `adrian-perea`,
+      twitter: `danilo_delbusso`,
+      github: `danilo-delbusso`,
+      linkedin: `danilo-delbusso`,
     },
   },
-  plugins: [
+  plugins: [ 
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      path: `${__dirname}/content/blog`,
+      name: `blog`,
+    },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -53,7 +53,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-embed-gist`,
             options: {
-              username: `adrianmarkperea`,
+              username: `danilo-delbusso`,
             },
           },
           `gatsby-remark-prismjs`,
@@ -67,7 +67,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-169187508-1`,
+        trackingId: `UA-169329705-1`,
       },
     },
     {
@@ -120,7 +120,7 @@ module.exports = {
               } 
             `,
             output: "/rss.xml",
-            title: "Adrian Perea's Dev Blog",
+            title: "Danilo Del Busso's Dev Portfolio",
           },
         ],
       },
@@ -128,8 +128,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Adrian Perea's Dev Blog`,
-        short_name: `A. Perea Dev`,
+        name: `Danilo Del Busso's Dev Portfolio`,
+        short_name: `D. Del Busso Dev`,
         start_url: `/`,
         background_color: `#ffffff`,
         display: `minimal-ui`,
