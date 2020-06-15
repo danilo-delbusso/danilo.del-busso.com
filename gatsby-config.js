@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Danilo Del Busso`,
-    defaultTitle: `Danilo Del Busso's Dev Portfolio`,
+    defaultTitle: `Danilo Del Busso`,
     author: {
       name: `Danilo Del Busso`,
       firstName: `Danilo`,
@@ -11,7 +11,7 @@ module.exports = {
         `and i am a CompSci student`,
       ],
     },
-    description: `Danilo Del Busso's Dev Portfolio`,
+    description: `Danilo Del Busso's Dev Blog & Portfolio`,
     siteUrl: `https://www.danilo-delbusso.github.io/blog`,
     social: {
       twitter: `danilo_delbusso`,
