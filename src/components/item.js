@@ -9,7 +9,7 @@ const Item = ({ title, path, isInternal, headerContent, description }) => (
         {isInternal ? (
           <Link to={path}>{title}</Link>
         ) : (
-          <a href={path}>{title}</a>
+          <a href={path} dangerouslySetInnerHTML={{__html:title}}></a>
         )}
       </h3>
       {headerContent}
