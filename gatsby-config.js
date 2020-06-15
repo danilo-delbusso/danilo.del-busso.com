@@ -12,21 +12,20 @@ module.exports = {
       ],
     },
     description: `Danilo Del Busso's Dev Portfolio`,
-    siteUrl: `https://www.danilodelbusso.dx.am/`,
+    siteUrl: `https://www.danilodelbusso.dx.am`,
     social: {
       twitter: `danilo_delbusso`,
       github: `danilo-delbusso`,
       linkedin: `danilo-delbusso`,
     },
   },
-  plugins: [ 
-    {
+  plugins: [ {
     resolve: `gatsby-source-filesystem`,
     options: {
       path: `${__dirname}/content/blog`,
       name: `blog`,
     },
-    },
+  },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
