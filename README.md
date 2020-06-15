@@ -1,11 +1,6 @@
-# danilodelbusso.dx.am
+# danilo-delbusso.github.io/blog
 
-My personal website.
-
-## Acknowledgements
-
-+ Pearl Santos 💖 - For the everlasting support and design advice
-+ Gatsby Team - [Gatsby Blog Starter](https://github.com/gatsbyjs/gatsby-starter-blog)
+My personal blog and portfolio.
 
 ## Original Author
 + [Adrian Perea](https://www.adrianperea.dev)

@@ -7,7 +7,7 @@ import blogPostStyles from "../css/blog-post.module.css"
 import "../css/prism-rainforest.css"
 
 const GITHUB_USERNAME = "danilo-delbusso"
-const REPO_NAME = "danilodelbusso.dx.am"
+const REPO_NAME = "blog"
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
@@ -32,7 +32,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://twitter.com/intent/tweet?text=${post.frontmatter.title} by @${social.twitter}&url=https://danilodelbusso.dx.am/${post.fields.slug}`}
+                href={`https://twitter.com/intent/tweet?text=${post.frontmatter.title} by @${social.twitter}&url=https://danilo-delbusso.github.io/blog/${post.fields.slug}`}
               >
                 Share on Twitter
               </a>
