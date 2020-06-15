@@ -19,10 +19,9 @@ const Header = () => (
             <div className="container">
               <div className={layoutStyles.navContainer}>
                 <Link to="/" className={layoutStyles.brand}>
-                  adrianperea.dev
+                  danilodelbusso.dx.am
                 </Link>
                 <div className={layoutStyles.navLinks}>
-                  <Link to="/blog/">Blog</Link>
                   <Link to="/projects/">Projects</Link>
                   <div className="modeToggler">
                     <button
@@ -54,7 +53,7 @@ const Footer = () => (
         <Social />
         <a href="/rss.xml">rss</a>
       </div>
-      <p>All materials &copy; Adrian Perea 2020</p>
+      <p>All materials &copy; Danilo Del Busso 2020</p>
     </div>
   </footer>
 )

@@ -6,8 +6,8 @@ import SEO from "../components/seo"
 import blogPostStyles from "../css/blog-post.module.css"
 import "../css/prism-rainforest.css"
 
-const GITHUB_USERNAME = "adrianmarkperea"
-const REPO_NAME = "adrianperea.dev"
+const GITHUB_USERNAME = "danilo-delbusso"
+const REPO_NAME = "danilodelbusso.dx.am"
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
@@ -32,7 +32,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://twitter.com/intent/tweet?text=${post.frontmatter.title} by @${social.twitter}&url=https://adrianperea.dev/${post.fields.slug}`}
+                href={`https://twitter.com/intent/tweet?text=${post.frontmatter.title} by @${social.twitter}&url=https://danilodelbusso.dx.am/${post.fields.slug}`}
               >
                 Share on Twitter
               </a>
