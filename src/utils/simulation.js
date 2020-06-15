@@ -1,6 +1,6 @@
 import { Chromosome, Individual, Simulation } from "@adrianperea/genie.js"
 
-const charset = "abcdefghijklmnopqrstuvwxyz "
+const charset = "ABCDEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
 
 class MutationSimulation extends Simulation {
   calculateFitness(individual, phrase) {
