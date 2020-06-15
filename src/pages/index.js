@@ -3,7 +3,7 @@ import SEO from "../components/seo"
 import indexStyles from "../css/index.module.css"
 import Mutating from "../components/mutating"
 import Layout from "../components/layout"
-import { graphql, Link, navigate } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import { IconContext } from "react-icons"
 import { FaChevronDown } from "react-icons/fa"
 import Image from "gatsby-image"
@@ -132,33 +132,19 @@ const BlogIndex = ({ data }) => {
           />
           <p>
             Hi! My name is {author.name}. I'm a full stack software engineer
-            from the Philippines, currently involved with Fujitsu Client
-            Computing Limited in Tokyo, Japan.
+            from <a href='https://en.wikipedia.org/wiki/Campobasso'>Italy</a> 🇮🇹, currently graduating as a Computer Science student at <a href='https://www.kcl.ac.uk/'>King's College London</a> 🇬🇧.
           </p>
 
           <p>
             {" "}
-            I'm interested in creating artificial intelligence{" "}
-            <a href="https://genie-phrase-guesser.netlify.app/">
-              simulations
-            </a>{" "}
-            and visualizations. I also <Link to="/blog">write</Link> about
-            Artificial Intelligence, edge computing, and the modern web.
+           I have professional experience as a full stack <a href='https://dotnet.microsoft.com/'>.NET</a> developer
           </p>
 
           <p>
-            My preferred programming language is Python, but I am also adept in
-            JavaScript. I am experienced in creating data science analyses with
-            pandas, matplotlib, and tensorflow. In addition, I am versed with
-            creating full stack web applications using React.js and Express, and
-            SQL/NoSQL.
+            My preferred programming language is JavaScript, but I am also adept in
+            C# and Java. I am experienced in creating fullstack webapps with Oracle based SQL, C# and ASP.NET. In addition, I am versed with
+            creating full stack web applications using React.js and Express.
           </p>
-
-          <p>
-            If you have projects that need data manipulation with visualization
-            to match, I'm your guy!
-          </p>
-
           <div className={indexStyles.socialIcons}>
             <Social />
           </div>
