@@ -19,13 +19,14 @@ module.exports = {
       linkedin: `danilo-delbusso`,
     },
   },
-  plugins: [ {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      path: `${__dirname}/content/blog`,
-      name: `blog`,
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
     },
-  },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -139,4 +140,5 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-dark-mode`,
   ],
+  pathPrefix: "/blog",
 }
