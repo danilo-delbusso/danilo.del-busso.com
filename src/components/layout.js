@@ -5,7 +5,7 @@ import layoutStyles from "../css/layout.module.css"
 import "../css/modeTogglerStyles.css"
 import Social from "./social"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
-
+import '@fortawesome/fontawesome-free/css/all.css'
 const Header = () => (
   <ThemeToggler>
     {({ theme, toggleTheme }) => {
