@@ -12,7 +12,7 @@ module.exports = {
       ],
     },
     description: `Danilo Del Busso's Dev Portfolio`,
-    siteUrl: `https://www.danilodelbusso.dx.am`,
+    siteUrl: `https://www.danilo-delbusso.github.io/blog`,
     social: {
       twitter: `danilo_delbusso`,
       github: `danilo-delbusso`,

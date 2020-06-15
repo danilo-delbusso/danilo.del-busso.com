@@ -19,7 +19,7 @@ const Header = () => (
             <div className="container">
               <div className={layoutStyles.navContainer}>
                 <Link to="/" className={layoutStyles.brand}>
-                  danilodelbusso.dx.am
+                  danilo-delbusso.github.io/blog
                 </Link>
                 <div className={layoutStyles.navLinks}>
                 <Link to="/blog/">Blog</Link>
