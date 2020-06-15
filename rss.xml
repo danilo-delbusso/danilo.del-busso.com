@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Danilo Del Busso's Dev Portfolio]]></title><description><![CDATA[Danilo Del Busso's Dev Portfolio]]></description><link>https://www.danilodelbusso.dx.am</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 15 Jun 2020 21:27:30 GMT</lastBuildDate><item><title><![CDATA[Dragonboard 410c Ethernet to Wi-Fi Access Point with VPN]]></title><description><![CDATA[How to set up a WiFi VPN Access Point using a Qualcomm Dragonboard 410c development board]]></description><link>https://www.danilodelbusso.dx.am/dragonboard-410-c-ethernet-to-wifi-vpn/</link><guid isPermaLink="false">https://www.danilodelbusso.dx.am/dragonboard-410-c-ethernet-to-wifi-vpn/</guid><pubDate>Wed, 24 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This set of commands and instructions are what I needed to do in order to set up a Wi-Fi access point on a Qualcomm Dragonboard 410c with a NordVPN connection.&lt;/p&gt;
+&lt;p&gt;Please read the disclaimers and list of items needed at the bottom of the page.&lt;/p&gt;
+&lt;p&gt;I will use &lt;a href=&quot;https://www.nano-editor.org/&quot;&gt;nano&lt;/a&gt; throughout this tutorial but you can obviously follow along with your favourite editor.&lt;/p&gt;
+&lt;h1&gt;Create Access Point&lt;/h1&gt;
+&lt;h2&gt;0. Before starting&lt;/h2&gt;
+&lt;p&gt;You will need to connect the ethernet connection to the board using the adapter.
+Once you have successfully connected run the command:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;ip a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and look for the names of the ethernet to usb, and the wifi adapter.&lt;/p&gt;
+&lt;p&gt;Look in the &lt;strong&gt;&lt;em&gt;“Adapter Names”&lt;/em&gt;&lt;/strong&gt; section of the appendix for more information.&lt;/p&gt;
+&lt;p&gt;From now on, I will be referring to the ethernet adapter as &lt;strong&gt;&lt;em&gt;eth0&lt;/em&gt;&lt;/strong&gt; and to the wifi one as &lt;strong&gt;&lt;em&gt;wlan0&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;1. First steps&lt;/h2&gt;
+&lt;p&gt;After flashing the firmware, you will need to install a few relevant packages.
+Run the commands:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install hostapd dnsmasq dhcpcd5 iptables iw rfkill bridge-utils
+sudo apt-get install openvpn -y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;now, stop the &lt;code class=&quot;language-text&quot;&gt;hostapd&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;dnsmasq&lt;/code&gt; processes by running:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo systemctl stop hostapd
+sudo systemctl stop dnsmasq&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;2.DHCPCD configuration&lt;/h2&gt;
+&lt;p&gt;We now need to modify our &lt;code class=&quot;language-text&quot;&gt;dhcpcd&lt;/code&gt; configuration. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/dhcpcd.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and add this to the bottom:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;interface wlan0
+    static ip_address=192.168.220.1/24
+    nohook wpa_supplicant&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;save the file and restart the &lt;code class=&quot;language-text&quot;&gt;dhcpcd&lt;/code&gt; service:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo systemctl restart dhcpcd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Disclaimer&lt;/h3&gt;
+&lt;p&gt;I have noticed that this step, though crucial to the successfull configuration, will not allow you to use SSH to connect to the dragonboard. It will also block you from accessing the internet from the board. This step can also be done at the end so you can skip it for now.&lt;/p&gt;
+&lt;h2&gt;3. Hostapd setup&lt;/h2&gt;
+&lt;p&gt;We will need to create a hostapad configuration.&lt;/p&gt;
+&lt;p&gt;Create a new file at this location:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/hostapd/hostapd.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and add this text.
+&lt;strong&gt;FOR YOUR OWN SECURITY CHANGE THE ssid= AND wpa_passphrase= FIELDS&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;interface=wlan0
+driver=nl80211
+
+hw_mode=g
+channel=6
+ieee80211n=1
+wmm_enabled=0
+macaddr_acl=0
+ignore_broadcast_ssid=0
+
+auth_algs=1
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+
+# This is the name of the network
+ssid=Essos
+# The network passphrase
+wpa_passphrase=ValarMorghulis&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;then, edit the file at:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/default/hostapd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;by subtituting the line&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;#DAEMON_CONF=&amp;quot;&amp;quot; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;with&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;DAEMON_CONF=&amp;quot;/etc/hostapd/hostapd.conf&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;notice we have deleted the &lt;code class=&quot;language-text&quot;&gt;#&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Save the file and do the same but for another file.
+This time, edit the file&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/init.d/hostapd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and replace&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;DAEMON_CONF= &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;with&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;DAEMON_CONF=/etc/hostapd/hostapd.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;4. dnsmasq setup&lt;/h2&gt;
+&lt;p&gt;We rename the current configuration file by running the command&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;then we open:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/dnsmasq.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and add the following lines:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;interface=wlan0       # Use interface wlan0  
+server=1.1.1.1       # Use Cloudflare DNS  
+dhcp-range=192.168.220.50,192.168.220.150,12h # IP range and lease time &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;save the file.&lt;/p&gt;
+&lt;h2&gt;5. Forwarding traffic&lt;/h2&gt;
+&lt;p&gt;First, we enable it throught the &lt;strong&gt;&lt;em&gt;systctl.conf&lt;/em&gt;&lt;/strong&gt; file.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/sysctl.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;then remove the line&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;#net.ipv4.ip_forward=1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and replace it with&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;net.ipv4.ip_forward=1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In order to avoid rebooting to activate the changes we run:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo sh -c &amp;quot;echo 1 &amp;gt; /proc/sys/net/ipv4/ip_forward&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Iptables&lt;/h3&gt;
+&lt;p&gt;I had to follow &lt;a href=&quot;https://github.com/netblue30/firejail/issues/2232#issuecomment-436423748&quot;&gt;this comment on an iptables issue&lt;/a&gt;in order to run iptables on my dragonboard.&lt;/p&gt;
+&lt;p&gt;It suggested to run&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo update-alternatives --set iptables /usr/sbin/iptables-legacy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;in order to downgrade the iptables install to a version which supports the commands we will use&lt;/p&gt;
+&lt;p&gt;Run the following command to add new rules to the iptable:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;then save the rules&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo sh -c &amp;quot;iptables-save &amp;gt; /etc/iptables.ipv4.nat&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and to make sure the settins are run when we boot edit the file:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/rc.local&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;find&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;exit 0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and add in an empty line above “exit 0”&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;iptables-restore &amp;lt; /etc/iptables.ipv4.nat&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;save, start hostapd and dnsmasq, and reboot&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo service hostapd start
+sudo service dnsmasq start
+sudo reboot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Create VPN Access Point&lt;/h1&gt;
+&lt;h2&gt;1. OpenVPN setup&lt;/h2&gt;
+&lt;p&gt;I will be showing the setup for a NordVPN account, for VyprVPN, go to the original RaspberryPi tutorial &lt;a href=&quot;https://pimylifeup.com/raspberry-pi-vpn-access-point/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Authentication file&lt;/h3&gt;
+&lt;p&gt;go to&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;cd /etc/openvpn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and create a new file&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/openvpn/auth.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Insert NordVPN’s email and password on two separate and adjacent lines, like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;email
+password&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Get the OpenVPN files&lt;/h3&gt;
+&lt;p&gt;go at the location&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;cd /etc/openvpn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Go to the &lt;a href=&quot;https://nordvpn.com/ovpn/&quot;&gt;ovpn section on the NordVPN website&lt;/a&gt;.
+Find the server you need, right click on the &lt;strong&gt;&lt;em&gt;“Download UDP”&lt;/em&gt;&lt;/strong&gt; button and copy the link by pressing &lt;strong&gt;&lt;em&gt;“Copy Link Address”&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;paste the link address in this command&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo wget &amp;lt;INSERT_LINK_HERE&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I have chosen the &lt;strong&gt;&lt;em&gt;it91&lt;/em&gt;&lt;/strong&gt; server. Change the next commands by substituing &lt;strong&gt;&lt;em&gt;it91&lt;/em&gt;&lt;/strong&gt; with your chosen server.&lt;/p&gt;
+&lt;p&gt;In order to make the rest of the tutorial slightly easier, rename the file you just downloaded. Also, we need to change the extension from .ovpn to .conf.&lt;/p&gt;
+&lt;p&gt;The file I downloaded is named &lt;strong&gt;&lt;em&gt;it91.nordvpn.com.udp1194.ovpn&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I change its name by executing:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo mv it91.nordvpn.com.udp1194.ovpn it91.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Setting up the VPN&lt;/h2&gt;
+&lt;p&gt;Change the content of the newly renamed&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano it91.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;by deleting the line&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;auth-user-pass&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and replacing it with&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;auth-user-pass auth.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;save the file.&lt;/p&gt;
+&lt;p&gt;Now to automatically connect to this server on startup we modify the file&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/default/openvpn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;by replacing the line&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;#autostart=&amp;quot;all&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;with &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;autostart=&amp;quot;it91&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Iptables setup&lt;/h2&gt;
+&lt;p&gt;We need to flush our current iptables&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo iptables -F
+sudo iptables -t nat -F
+sudo iptables -X&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;then install our new iptables&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and then overwrite the old rules from the tutorial without VPN&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo sh -c &amp;quot;iptables-save &amp;gt; /etc/iptables.ipv4.nat&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Create Bridge&lt;/h2&gt;
+&lt;p&gt;The last step requires us to create a bridge between the ethernet and wifi ports.
+We can do this by editing the file&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/network/interfaces&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and adding the following lines:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;auto br0
+
+iface br0 inet dhcp
+
+bridge-ports eth0 wlan0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;then we run the following two commands&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo service network-manager stop
+
+sudo rfkill unblock wlan&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and we bring up the bridge &lt;strong&gt;&lt;em&gt;br0&lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo ifup br0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and run our hostapd configuration by running&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo /etc/init.d/hostapd restart&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;finally, reboot the device&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo reboot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Appendix&lt;/h1&gt;
+&lt;h2&gt;The host machine I used:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Operating System: Manjaro Linux &lt;/li&gt;
+&lt;li&gt;KDE Plasma Version: 5.15.1&lt;/li&gt;
+&lt;li&gt;KDE Frameworks Version: 5.55.0&lt;/li&gt;
+&lt;li&gt;Qt Version: 5.12.1&lt;/li&gt;
+&lt;li&gt;Kernel Version: 4.19.24-1-MANJARO&lt;/li&gt;
+&lt;li&gt;OS Type: 64-bit&lt;/li&gt;
+&lt;li&gt;Processors: 8 × Intel® Core™ i7-7700HQ CPU @ 2.80GHz&lt;/li&gt;
+&lt;li&gt;Memory: 15.6 GiB of RAM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Adapter Names&lt;/h2&gt;
+&lt;p&gt;In my case, after running the
+&lt;code class=&quot;language-text&quot;&gt;ip a&lt;/code&gt; command (you could also run &lt;code class=&quot;language-text&quot;&gt;sudo ifconfig&lt;/code&gt;, though it is deprecated at the time of writing this tutorial) I obtained something on the lines of this result:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enx008e8a8d9465: &amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt; mtu 1500 qdisc fq_codel state DOWN group default qlen 1000
+    link/ether 88:d7:f6:1f:28:c9 brd ff:ff:ff:ff:ff:ff
+3: wlan0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether f0:03:8c:ab:dc:89 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.192/24 brd 192.168.1.255 scope global dynamic noprefixroute wlp3s0
+       valid_lft 20331sec preferred_lft 20331sec
+    inet6 fe80::aee5:8162:f8c9:f2ea/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We ignore the &lt;code class=&quot;language-text&quot;&gt;lo&lt;/code&gt; and we notice that the wifi adapter is named &lt;strong&gt;&lt;em&gt;wlan0&lt;/em&gt;&lt;/strong&gt; and the ethernet to usb one is named &lt;strong&gt;&lt;em&gt;enx008e8a8d9465&lt;/em&gt;&lt;/strong&gt;. Names are usually similar and easily spotted, especially if you run a clean install of Debian as I sugges you do. In that case, you should only see three results and it will be easy to spot which ones are the ones you need.&lt;/p&gt;
+&lt;h3&gt;DISCLAIMERS&lt;/h3&gt;
+&lt;p&gt;🚨&lt;strong&gt;THESE STEPS ARE THE ONES THAT WORKED FOR ME, I TAKE NO REPONSIBILITY IF ANYTHING DOES NOT GO AS PLANNED OR YOUR DEVICE/S ARE DAMAGED IN ANY WAY&lt;/strong&gt;🚨&lt;/p&gt;
+&lt;h4&gt;Hardware&lt;/h4&gt;
+&lt;p&gt;In order to reproduce the steps I made you will need:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A host machine (I used my laptop, specs in the Appendix section)&lt;/li&gt;
+&lt;li&gt;A Qualcomm Dragonboard 410c&lt;/li&gt;
+&lt;li&gt;USB to microUSB cable&lt;/li&gt;
+&lt;li&gt;A NordVPN or VyprVPN account&lt;/li&gt;
+&lt;li&gt;Ethernet to USB adapter&lt;/li&gt;
+&lt;li&gt;USB Mouse and/or keyboard (not required to perform flash)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HDMI Monitor with full size HDMI cable (not required to perform flash)&lt;/p&gt;
+&lt;h4&gt;Dragonboard Firmware&lt;/h4&gt;
+&lt;p&gt;I suggest using Debian as it is the easiest to install and has the most support.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.96boards.org/documentation/consumer/dragonboard/dragonboard410c/downloads/debian.md.html&quot;&gt;Download Page&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.96boards.org/documentation/consumer/dragonboard/dragonboard410c/downloads/debian.md.html&quot;&gt;Installation instructions using a Linux host machine&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In order to write this post, I combined these tutorials:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://pimylifeup.com/raspberry-pi-wireless-access-point/&quot;&gt;Raspberry-Pi Access Point&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pimylifeup.com/raspberry-pi-vpn-access-point/&quot;&gt;Raspberry-Pi VPN Access Point&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://trisquel.info/en/wiki/make-bridge-ethernet-wifi&quot;&gt;Make a bridge Ethernet to WIFI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item></channel></rss>
