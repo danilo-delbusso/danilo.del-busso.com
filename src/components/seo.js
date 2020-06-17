@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import twitterImage from "../../content/assets/favicon.png"
+import twitterImage from "../../content/assets/profile-pic.png"
 
 const SEO = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
@@ -70,6 +70,7 @@ const SEO = ({ description, lang, meta, title }) => {
           name: `twitter:image`,
           content: `${site.siteMetadata.siteUrl}/${twitterImage}`,
         },
+        { name: `monetization`, content: `$ilp.uphold.com/p88mdHFZZUAw` },
       ].concat(meta)}
     />
   )
