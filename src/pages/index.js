@@ -132,17 +132,20 @@ const BlogIndex = ({ data }) => {
           />
           <p>
             Hi! My name is {author.name}. I'm a full stack software engineer
-            from <a href='https://en.wikipedia.org/wiki/Campobasso'>Italy</a> 🇮🇹, currently graduating as a Computer Science student at <a href='https://www.kcl.ac.uk/'>King's College London</a> 🇬🇧.
+            from Italy 🇮🇹, currently graduating as a Computer Science student at{" "}
+            <a href="https://www.kcl.ac.uk/">King's College London</a> 🇬🇧.
           </p>
 
           <p>
             {" "}
-           I have professional experience as a full stack <a href='https://dotnet.microsoft.com/'>.NET</a> developer
+            I have professional experience as a full stack{" "}
+            <a href="https://dotnet.microsoft.com/">.NET</a> developer
           </p>
 
           <p>
-            My preferred programming language is JavaScript, but I am also adept in
-            C# and Java. I am experienced in creating fullstack webapps with Oracle based SQL, C# and ASP.NET. In addition, I am versed with
+            My preferred programming language is JavaScript, but I am also adept
+            in C# and Java. I am experienced in creating fullstack webapps with
+            Oracle based SQL, C# and ASP.NET. In addition, I am versed with
             creating full stack web applications using React.js and Express.
           </p>
           <div className={indexStyles.socialIcons}>
