@@ -1,7 +1,7 @@
 ---
 title: "The COVID App That Shows How Governments Don't Need To Compromise On Data Privacy"
 description: 'Immuni is safe, and private. The Italian government is showing the world how data privacy can be achieved by any entity'
-date: '2019-06-17'
+date: '2020-06-17'
 tags: 'COVID-19_Contact Tracing_Government_Data Privacy'
 ---
 
