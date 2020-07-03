@@ -16,7 +16,7 @@ I will use [nano](https://www.nano-editor.org/) throughout this tutorial but you
 
 You will need to connect the ethernet connection to the board using the adapter. 
 Once you have successfully connected run the command:
-```
+```bash
 ip a
 ```
 and look for the names of the ethernet to usb, and the wifi adapter.
@@ -28,7 +28,7 @@ From now on, I will be referring to the ethernet adapter as ***eth0*** and to th
 ## 1. First steps
 After flashing the firmware, you will need to install a few relevant packages.
 Run the commands:
-```
+```bash
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install hostapd dnsmasq dhcpcd5 iptables iw rfkill bridge-utils
@@ -36,7 +36,7 @@ sudo apt-get install openvpn -y
 ```
 now, stop the `hostapd` and `dnsmasq` processes by running:
 
-```
+```bash
 sudo systemctl stop hostapd
 sudo systemctl stop dnsmasq
 ```
@@ -45,18 +45,18 @@ sudo systemctl stop dnsmasq
 
 We now need to modify our `dhcpcd` configuration. 
 
-```
+```bash
 sudo nano /etc/dhcpcd.conf
 ```
 and add this to the bottom:
-```
+```bash
 interface wlan0
     static ip_address=192.168.220.1/24
     nohook wpa_supplicant
 ```
 
 save the file and restart the `dhcpcd` service:
-```
+```bash
 sudo systemctl restart dhcpcd
 ```
 
@@ -67,13 +67,13 @@ I have noticed that this step, though crucial to the successfull configuration, 
 We will need to create a hostapad configuration.
 
 Create a new file at this location:
-```
+```bash
 sudo nano /etc/hostapd/hostapd.conf
 ```
 and add this text.
 **FOR YOUR OWN SECURITY CHANGE THE ssid= AND wpa_passphrase= FIELDS**
 
-```
+```bash
 interface=wlan0
 driver=nl80211
 
@@ -97,44 +97,44 @@ wpa_passphrase=ValarMorghulis
 ```
 
 then, edit the file at:
-```
+```bash
 sudo nano /etc/default/hostapd
 ```
 by subtituting the line
-```
+```bash
 #DAEMON_CONF="" 
 ```
 with
-```
+```bash
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 notice we have deleted the `#`.
 
 Save the file and do the same but for another file.
 This time, edit the file
-```
+```bash
 sudo nano /etc/init.d/hostapd
 ```
 and replace
-```
+```bash
 DAEMON_CONF= 
 ```
 with
-```
+```bash
 DAEMON_CONF=/etc/hostapd/hostapd.conf
 ```
 
 ## 4. dnsmasq setup
 We rename the current configuration file by running the command
-```
+```bash
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 ```
 then we open:
-```
+```bash
 sudo nano /etc/dnsmasq.conf
 ```
 and add the following lines:
-```
+```bash
 interface=wlan0       # Use interface wlan0  
 server=1.1.1.1       # Use Cloudflare DNS  
 dhcp-range=192.168.220.50,192.168.220.150,12h # IP range and lease time 
@@ -145,20 +145,20 @@ save the file.
 
 First, we enable it throught the ***systctl.conf*** file.
 
-```
+```bash
 sudo nano /etc/sysctl.conf
 ```
 
 then remove the line
-```
+```bash
 #net.ipv4.ip_forward=1
 ```
 and replace it with
-```
+```bash
 net.ipv4.ip_forward=1
 ```
 In order to avoid rebooting to activate the changes we run:
-```
+```bash
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 ```
 
@@ -167,38 +167,38 @@ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 I had to follow [this comment on an iptables issue](https://github.com/netblue30/firejail/issues/2232#issuecomment-436423748)in order to run iptables on my dragonboard.
 
 It suggested to run
-```
+```bash
 sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
 ```
 in order to downgrade the iptables install to a version which supports the commands we will use
 
 Run the following command to add new rules to the iptable:
-```
+```bash
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ```
 
 then save the rules
 
-```
+```bash
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 ```
 
 and to make sure the settins are run when we boot edit the file:
-```
+```bash
 sudo nano /etc/rc.local
 ```
 find
-```
+```bash
 exit 0
 ```
 and add in an empty line above "exit 0"
-```
+```bash
 iptables-restore < /etc/iptables.ipv4.nat
 ```
 
 save, start hostapd and dnsmasq, and reboot
 
-```
+```bash
 sudo service hostapd start
 sudo service dnsmasq start
 sudo reboot
@@ -214,25 +214,25 @@ I will be showing the setup for a NordVPN account, for VyprVPN, go to the origin
 
 go to
 
-```
+```bash
 cd /etc/openvpn
 ```
 and create a new file
 
-```
+```bash
 sudo nano /etc/openvpn/auth.txt
 ```
 
 Insert NordVPN's email and password on two separate and adjacent lines, like this:
 
-```
+```bash
 email
 password
 ```
 ### Get the OpenVPN files 
 
 go at the location
-```
+```bash
 cd /etc/openvpn
 ```
 
@@ -240,7 +240,7 @@ Go to the [ovpn section on the NordVPN website](https://nordvpn.com/ovpn/).
 Find the server you need, right click on the ***"Download UDP"*** button and copy the link by pressing ***"Copy Link Address"***.
 
 paste the link address in this command
-```
+```bash
 sudo wget <INSERT_LINK_HERE>
 ```
 
@@ -252,7 +252,7 @@ The file I downloaded is named ***it91.nordvpn.com.udp1194.ovpn***
 
 I change its name by executing:
 
-```
+```bash
 sudo mv it91.nordvpn.com.udp1194.ovpn it91.conf
 ```
 
@@ -260,48 +260,48 @@ sudo mv it91.nordvpn.com.udp1194.ovpn it91.conf
 
 Change the content of the newly renamed
 
-```
+```bash
 sudo nano it91.conf
 ```
 by deleting the line
 
-```
+```bash
 auth-user-pass
 ```
 and replacing it with
-```
+```bash
 auth-user-pass auth.txt
 ```
 save the file.
 
 Now to automatically connect to this server on startup we modify the file
-```
+```bash
 sudo nano /etc/default/openvpn
 ```
 by replacing the line
-```
+```bash
 #autostart="all"
 ```
 with 
-```
+```bash
 autostart="it91"
 ```
 
 ## Iptables setup
 We need to flush our current iptables
-```
+```bash
 sudo iptables -F
 sudo iptables -t nat -F
 sudo iptables -X
 ```
 then install our new iptables
 
-```
+```bash
 sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 ```
 
 and then overwrite the old rules from the tutorial without VPN
-```
+```bash
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 ```
 
@@ -309,12 +309,12 @@ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 The last step requires us to create a bridge between the ethernet and wifi ports.
 We can do this by editing the file
 
-```
+```bash
 sudo nano /etc/network/interfaces
 ```
 and adding the following lines:
 
-```
+```bash
 auto br0
 
 iface br0 inet dhcp
@@ -323,24 +323,24 @@ bridge-ports eth0 wlan0
 ```
 
 then we run the following two commands
-```
+```bash
 sudo service network-manager stop
 
 sudo rfkill unblock wlan
 ```
 and we bring up the bridge ***br0*** 
-```
+```bash
 sudo ifup br0
 ```
 and run our hostapd configuration by running
 
-```
+```bash
 sudo /etc/init.d/hostapd restart
 ```
 
 finally, reboot the device
 
-```
+```bash
 sudo reboot
 ```
 
@@ -359,7 +359,7 @@ sudo reboot
 ## Adapter Names
 In my case, after running the 
 `ip a` command (you could also run `sudo ifconfig`, though it is deprecated at the time of writing this tutorial) I obtained something on the lines of this result:
-```
+```bash
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
