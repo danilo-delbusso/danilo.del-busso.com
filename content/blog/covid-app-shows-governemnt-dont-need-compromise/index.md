@@ -5,22 +5,23 @@ date: '2019-06-17'
 tags: 'COVID-19_Contact Tracing_Government_Data Privacy'
 ---
 
-
 ![](https://raw.githubusercontent.com/danilo-delbusso/blog/master/content/blog/covid-app-shows-governemnt-dont-need-compromise/covid-article.jpg)
 Starting on the 15th of June, the Italian Government enabled nationwide downloads of their Contact Tracing app, [Immuni](https://www.immuni.italia.it/ "https://www.immuni.italia.it/"). The app allows for effortless tracing of SARS-Cov-2 virus.
 
-Though built in less than two months under heavy government guidance and scrutiny, it has been praised for its security and data protection policies for the user’s data privacy.
+Though built in less than two months under heavy government guidance and scrutiny, it has been praised for its security and data protection policies.
 
 As its approach to critical design decisions is likely to be replicated in the future by other governments, it is worthwhile to dig deeper and analyse how the app works and how it protects the user from attacks and government officials.
 
 ## How it works
 
 Immuni is based on a version of the Bluetooth wireless data transmission technology (BLE), like that which allows a pair of wireless headphones to connect to their smartphone and which Apple and Google have unlocked in their operating systems, making it accessible even for a different and unimaginable purpose before the pandemic, including contact tracing.
+
 After downloading and starting it, Immuni does not require user interaction that goes beyond enabling system-wide Bluetooth connectivity. The application generates an alphanumeric key daily from which it produces an identification code, which is then broadcast by the smartphone via Bluetooth for about 15 minutes. Upon expiry of the ID, Immuni generates a new one, always linked to the same key known only to the application. In this way, it becomes practically impossible for an attacker to trace from an ID to a specific smartphone.
 
 ![](https://raw.githubusercontent.com/danilo-delbusso/blog/master/content/blog/covid-app-shows-governemnt-dont-need-compromise/covid-19-app-1.png)
 
 Smartphones with Immuni that come into each other's vicinity exchange IDs and record the information exclusively in their memory, without any external exchange of data. With an excellent approximation, the app also calculates the distance and time between enabled devices to estimate if the proximity to a person who turned out to be positive was sufficient for infection.
+
 ## Main Data Privacy Concerns and Solutions
 
 The [official documentation](https://github.com/immuni-app/immuni-documentation "https://github.com/immuni-app/immuni-documentation") extensively covers the security measures put in place by the developers. Some of the main issues faced by the team are however more relevant to this type of application.
@@ -37,7 +38,7 @@ Fake contagion data has the same size and structure as the valid one, and the se
 
 ## Exposure Notifications
 
-Exposure Notifications are implemented at Google Play Services. This ensures the exchange of Bluetooth packets when the app isn't active. However, that app wakes up periodically to check the data it's received and potentially warn the user. For this Immuni uses WorkManager which, thanks to a local database, guarantees the correct execution of these periodic tasks.
+Exposure Notifications are implemented at Google Play Services level`. This ensures the exchange of Bluetooth packets when the app isn't active. However, that app wakes up periodically to check the data it's received and potentially warn the user. For this Immuni uses WorkManager which, thanks to a local database, guarantees the correct execution of these periodic tasks.
 
 However, as one of the developers pointed out in an [AMAA on Reddit](https://www.reddit.com/r/italy/comments/h9c53o/siamo_bending_spoons_e_abbiamo_sviluppato_lapp/ "https://www.reddit.com/r/italy/comments/h9c53o/siamo_bending_spoons_e_abbiamo_sviluppato_lapp/") (in Italian):
 
@@ -53,9 +54,9 @@ Analytics of epidemiological information is also a potential issue as they are k
 
 ## Conclusion
 
-When first announced, the app gained considerable traction from the press: the idea of contact tracing seemed promising, but raised many doubts on the topic of the protection of personal data. The italian public opinion shifted towards discarding an option that would mimic the intrusive South korean architecture.
+When first announced, the app gained considerable traction from the press: the idea of contact tracing seemed promising, but raised many doubts on the topic of the protection of personal data. The Italian public opinion shifted towards discarding an option that would mimic the intrusive South Korean architecture.
 
-The Government has already provided important reassurances on their website and committed early on in releasing the source code on [GitHub](https://github.com/immuni-app "https://github.com/immuni-app"). Furthermore, the investigation by [Mobisec](https://mobisec.com/ "https://mobisec.com/"), an Italian company which since 2017 certifies the mobile security of important companies, has further confirmed the particular attention to the issue of privacy.
+The Government has already provided important reassurances on its website and committed early on in releasing the source code on [GitHub](https://github.com/immuni-app "https://github.com/immuni-app"). Furthermore, the investigation by [Mobisec](https://mobisec.com/ "https://mobisec.com/"), an Italian company which since 2017 certifies the mobile security of important companies, has further confirmed the particular attention to the issue of privacy.
 
 Mobisec’s study aimed at identifying security and privacy concerns highlighted an overall quality level above average
 
