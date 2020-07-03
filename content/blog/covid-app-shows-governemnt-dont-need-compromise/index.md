@@ -1,6 +1,6 @@
 ---
-title: 'The COVID App That Shows How Governments Dont Need To Compromise On Data Privacy'
-description: 'asdasdasd asdhasda sdahsd asda sdj'
+title: "The COVID App That Shows How Governments Don't Need To Compromise On Data Privacy"
+description: 'Immuni is safe, and private. The Italian government is showing the world how data privacy can be achieved by any entity'
 date: '2019-06-17'
 tags: 'COVID-19_Contact Tracing_Government_Data Privacy'
 ---
@@ -38,7 +38,7 @@ Fake contagion data has the same size and structure as the valid one, and the se
 
 ## Exposure Notifications
 
-Exposure Notifications are implemented at Google Play Services level`. This ensures the exchange of Bluetooth packets when the app isn't active. However, that app wakes up periodically to check the data it's received and potentially warn the user. For this Immuni uses WorkManager which, thanks to a local database, guarantees the correct execution of these periodic tasks.
+Exposure Notifications are implemented at Google Play Services level. This ensures the exchange of Bluetooth packets when the app isn't active. However, that app wakes up periodically to check the data it's received and potentially warn the user. For this Immuni uses WorkManager which, thanks to a local database, guarantees the correct execution of these periodic tasks.
 
 However, as one of the developers pointed out in an [AMAA on Reddit](https://www.reddit.com/r/italy/comments/h9c53o/siamo_bending_spoons_e_abbiamo_sviluppato_lapp/ "https://www.reddit.com/r/italy/comments/h9c53o/siamo_bending_spoons_e_abbiamo_sviluppato_lapp/") (in Italian):
 
