@@ -30,6 +30,7 @@ Our query will return a `DataTable` object in this format:
 | 3  | New York |
 
 <br/>
+
 Let's add it to our `PageDL.cs` file in the `Project.DL` namespace:
 
 ```csharp
