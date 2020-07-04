@@ -1,9 +1,11 @@
 ---
-title: "The COVID App That Shows How Governments Don't Need To Compromise On Data Privacy"
+title: "Italy Launches Contact Tracing App; Proves We Shouldn't Compromise On Privacy?"
 description: 'Immuni is safe, and private. The Italian government is showing the world how data privacy can be achieved by any entity'
 date: '2020-06-17'
-tags: 'COVID-19_Contact Tracing_Government_Data Privacy'
+tags: '<a target="blank" href="https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp" class="btn btn-outline-secondary"><strong>PUBLISHED ON HACKERNOON 📰⌚</strong></a>_COVID-19_Contact Tracing_Government_Data Privacy'
 ---
+<a href="https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp" class="btn btn-outline-secondary"><strong>READ IT ON HACKERNOON 📰⌚</strong></a>
+<br/>
 
 ![](https://raw.githubusercontent.com/danilo-delbusso/blog/master/content/blog/covid-app-shows-governemnt-dont-need-compromise/covid-article.jpg)
 Starting on the 15th of June, the Italian Government enabled nationwide downloads of their Contact Tracing app, [Immuni](https://www.immuni.italia.it/ "https://www.immuni.italia.it/"). The app allows for effortless tracing of SARS-Cov-2 virus.
