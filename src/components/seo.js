@@ -46,7 +46,6 @@ const SEO = ({ description, lang, meta, title }) => {
           property: `og:image`,
           content: `https://raw.githubusercontent.com/danilo-delbusso/blog/master/content/assets/profile-pic-sm.jpg`,
           itemprop : `image`,
-          content : `url_image`
         },
         {
           property: `og:description`,
