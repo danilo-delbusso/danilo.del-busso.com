@@ -44,7 +44,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:image`,
-          content: site.siteMetadata.image,
+          content: `https://raw.githubusercontent.com/danilo-delbusso/blog/master/content/assets/profile-pic-sm.jpg`,
           itemprop : `image`,
           content : `url_image`
         },
@@ -74,7 +74,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           name: `twitter:image`,
-          content: site.siteMetadata.image,
+          content: `https://raw.githubusercontent.com/danilo-delbusso/blog/master/content/assets/profile-pic-sm.jpg`
         },
         { name: `monetization`, content: `$ilp.uphold.com/p88mdHFZZUAw` },
       ].concat(meta)}
