@@ -53,7 +53,7 @@ You can also use some HTML to achieve the same result.
 <img src='https://path/to/animation.gif' />
 ```
 
-_💡PRO TIP: you can wrap this <__`img />`_ _tag in a_ _`<a>`_ _tag to make it a button!_
+_💡PRO TIP: you can wrap this `<img />` tag in a `<a>` tag to make it a button!_
 
 For more GIF customisation you can check out this [flavoured markdown GIF tutorial](https://gist.github.com/uupaa/f77d2bcf4dc7a294d109 "https://gist.github.com/uupaa/f77d2bcf4dc7a294d109") on GitHub.
 

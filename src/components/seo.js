@@ -68,7 +68,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           name: `twitter:image`,
-          content: `${site.siteMetadata.siteUrl}/${twitterImage}`,
+          content: `${site.siteMetadata.image}`,
         },
         { name: `monetization`, content: `$ilp.uphold.com/p88mdHFZZUAw` },
       ].concat(meta)}
