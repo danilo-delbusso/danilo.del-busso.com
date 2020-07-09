@@ -23,13 +23,13 @@ You will see this message confirming that you are creating the special repositor
 
 ## 2. Create your animated GIF
 
-Here is where your creativity can shine. I suggest you create a GIF which will show on your profile page.
+Here is where your creativity can shine. I suggest you make a GIF which will show on your profile page.
 
-You can create whatever you want. What I have found easiest is to create a quick HTML page with a welcome text and some CSS animations.
+You can create whatever you want. What I have found easiest is to design a quick HTML page with a welcome text and some CSS animations.
 
 I used [Animista](https://animista.net/ "https://animista.net/") for my CSS animations.
 
-Once you have created your webpage (you can check out the code for mine [here](https://github.com/danilo-delbusso/danilo-delbusso/tree/master/html-animation "https://github.com/danilo-delbusso/danilo-delbusso/tree/master/html-animation")), you are ready to create your GIF.
+Once you have built your webpage (you can check out the code for mine [here](https://github.com/danilo-delbusso/danilo-delbusso/tree/master/html-animation "https://github.com/danilo-delbusso/danilo-delbusso/tree/master/html-animation")), you are ready to create your GIF.
 
 Download a screen-to-gif recording app and record your animations. I suggest to use [peek](https://github.com/phw/peek "https://github.com/phw/peek") or [ScreenToGif](https://www.screentogif.com/ "https://www.screentogif.com/").
 
