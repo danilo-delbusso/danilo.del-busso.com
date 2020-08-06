@@ -1,9 +1,11 @@
 ---
-title: 'How to Pimp Your Github Profile Page in 3 Easy Steps'
+title: 'Level Up Your Github Profile Page in 3 Easy Steps'
 description: 'Add a custom .gif to your profile to give it a bit of a buzz'
 date: '2020-07-09'
-tags: 'GitHub_Profile_tutorial'
+tags: '<a target="blank" href="https://hackernoon.com/level-up-your-github-profile-page-in-three-easy-steps-7fz3et3" class="btn btn-outline-secondary"><strong>PUBLISHED ON HACKERNOON 📰⌚</strong></a>_GitHub_Profile_tutorial'
 ---
+<a href="https://hackernoon.com/level-up-your-github-profile-page-in-three-easy-steps-7fz3et3" class="btn btn-outline-secondary"><strong>READ IT ON HACKERNOON 📰⌚</strong></a>
+<br/>
 
 Whether you're looking for a new position and want to stand out or you just like to make cool things, GitHub offers you the tools to get your own customised welcome message, like this
 
