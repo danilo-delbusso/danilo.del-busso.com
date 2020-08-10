@@ -6,14 +6,11 @@ module.exports = {
       name: `Danilo Del Busso`,
       firstName: `Danilo`,
       lastName: `Del Busso`,
-      descriptions: [
-        `and i write applications for fun`,
-        `and i am a CompSci student`,
-      ],
+      descriptions: [`and i write applications for fun`],
     },
     description: `Danilo Del Busso's Dev Blog & Portfolio`,
-    siteUrl: `https://www.danilo-delbusso.github.io/blog`,
-    image: `https://raw.githubusercontent.com/danilo-delbusso/blog/master/content/assets/profile-pic-sm.png`,
+    siteUrl: `https://www.danilo-delbusso.me`,
+    image: `https://github.com/danilo-delbusso/danilo-delbusso.me/blob/master/content/assets/profile-pic-sm.jpg`,
     social: {
       twitter: `danilo_delbusso`,
       github: `danilo-delbusso`,
@@ -141,5 +138,4 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-dark-mode`,
   ],
-  pathPrefix: "/blog",
 }
