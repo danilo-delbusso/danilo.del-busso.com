@@ -21,13 +21,14 @@ const Blog = ({ data }) => {
             headerContent={
               <>
                 <span className={projectsStyles.tagContainer}>
-                  {node.frontmatter.tags.split('_').map(tag => (
+                  {node.frontmatter.tags.split("_").map(tag => (
                     <small
                       key={`${node.frontmatter.title}_${tag}`}
                       dangerouslySetInnerHTML={{ __html: tag }}
                     ></small>
                   ))}
-                </span><small>{node.frontmatter.date}</small>
+                </span>
+                <small>{node.frontmatter.date}</small>
               </>
             }
             description={node.frontmatter.description || node.excerpt}
