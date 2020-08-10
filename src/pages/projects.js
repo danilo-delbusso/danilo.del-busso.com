@@ -22,7 +22,10 @@ const Projects = () => {
                 headerContent={
                   <div className={projectsStyles.tagContainer}>
                     {project.tags.map(tag => (
-                      <small key={`${project.title}_${tag}`}dangerouslySetInnerHTML={{__html:tag}}></small>
+                      <small
+                        key={`${project.title}_${tag}`}
+                        dangerouslySetInnerHTML={{ __html: tag }}
+                      ></small>
                     ))}
                   </div>
                 }
