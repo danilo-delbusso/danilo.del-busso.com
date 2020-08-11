@@ -132,8 +132,8 @@ const BlogIndex = ({ data }) => {
           />
           <p>
             Hi! My name is {author.name}. I'm a full stack software engineer
-            from Italy 🇮🇹, currently graduating as a Computer Science student at{" "}
-            <a href="https://www.kcl.ac.uk/">King's College London</a> 🇬🇧.
+            from Italy <img height="17" alt="italy flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo-delbusso.me/36178a67861056684145e11b2606a51728248210/content/assets/it.svg" />, currently graduating as a Computer Science student at{" "}
+            <a href="https://www.kcl.ac.uk/">King's College London</a> <img height="17" alt="uk flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo-delbusso.me/36178a67861056684145e11b2606a51728248210/content/assets/uk.svg" />.
           </p>
 
           <p>
