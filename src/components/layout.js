@@ -53,7 +53,6 @@ const Footer = () => (
     <div className="container">
       <div className={layoutStyles.footerLinks}>
         <Social />
-        <a href="/rss.xml">rss</a>
       </div>
       <p>All materials &copy; Danilo Del Busso 2020</p>
     </div>
