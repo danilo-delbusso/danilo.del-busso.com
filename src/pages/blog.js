@@ -43,7 +43,7 @@ const Blog = ({ data }) => {
       <SEO title="Blog" />
       <section className="page-section">
         <div className="container">
-          <h2 className="title">Articles</h2>
+          <h2 className="title">Blog</h2>
           {content}
         </div>
       </section>

@@ -1,6 +1,6 @@
 export default [
   {
-    title: "Level Up Your Github Profile Page in Three Easy Steps    ",
+    title: "Level Up Your Github Profile Page in Three Easy Steps",
     path:
       "https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp",
     description: "August 3rd 2020",
@@ -12,6 +12,6 @@ export default [
     path:
       "https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp",
     description: "July 3rd 2020",
-    tags: ["data-privacy", "coronavirus", "open-source", "government"],
+    tags: ["<a href='https://medium.com/@delbussodanilo98/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-62f2df264dfa'>ALSO ON MEDIUM</a>","data-privacy", "coronavirus", "open-source", "government"],
   },
 ]
