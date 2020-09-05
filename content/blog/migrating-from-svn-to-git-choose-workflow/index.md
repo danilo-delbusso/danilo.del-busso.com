@@ -1,6 +1,6 @@
 ---
 title: 'Migrating From SVN to Git: Choose Your First Workflow'
-description: 'I will be comparing briefly the two simplest Git workflows to help you conceptualise the very basic differences between SVN and Git’s approaches to keep track of your work in a team.'
+description: 'Understand the two simplest Git workflows to help choose how to migrate your team from SVN.'
 date: '2020-09-05'
 tags: 'git_svn_git-workflow_version-control_team-management_team-productivity_beginners-guide'
 ---
