@@ -24,6 +24,7 @@ const Header = () => (
                 <div className={layoutStyles.navLinks}>
                 <Link to="/blog/">Blog</Link>
                   <Link to="/projects/">Projects</Link>
+                  <Link to="/articles/">Published Articles</Link>
                   <div className="modeToggler">
                     <button
                       onClick={() =>
