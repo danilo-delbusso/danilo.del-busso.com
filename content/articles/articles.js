@@ -2,7 +2,7 @@ export default [
   {
     title: "Level Up Your Github Profile Page in Three Easy Steps",
     path:
-      "https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp",
+      "https://hackernoon.com/level-up-your-github-profile-page-in-three-easy-steps-7fz3et3",
     description: "August 3rd 2020",
     tags: ["personal-branding", "tutorial", "quick", "github"],
   },
