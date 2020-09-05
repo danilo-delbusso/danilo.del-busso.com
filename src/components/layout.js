@@ -5,7 +5,7 @@ import layoutStyles from "../css/layout.module.css"
 import "../css/modeTogglerStyles.css"
 import Social from "./social"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
-import '@fortawesome/fontawesome-free/css/all.css'
+import "@fortawesome/fontawesome-free/css/all.css"
 const Header = () => (
   <ThemeToggler>
     {({ theme, toggleTheme }) => {
@@ -19,12 +19,12 @@ const Header = () => (
             <div className="container">
               <div className={layoutStyles.navContainer}>
                 <Link to="/" className={layoutStyles.brand}>
-                  Danilo Del Busso
+                  <i className="fas fa-home"></i>
                 </Link>
                 <div className={layoutStyles.navLinks}>
-                <Link to="/blog/">Blog</Link>
+                  <Link to="/blog/">Blog</Link>
                   <Link to="/projects/">Projects</Link>
-                  <Link to="/articles/">Articles</Link>
+                  <Link to="/articles/">Published Stuff</Link>
                   <div className="modeToggler">
                     <button
                       onClick={() =>
