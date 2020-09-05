@@ -11,7 +11,7 @@ const Projects = () => {
       <SEO title="Published Articles" />
       <section className="page-section">
         <div className="container">
-          <h2 className="title">Published Articles</h2>
+          <h2 className="title">Articles</h2>
           {articles.map(article => {
             return (
               <Item
