@@ -14,16 +14,15 @@ const Projects = () => {
           <h2 className="title">Articles</h2>
           {articles.map(article => {
             return (
-              <Item
-                key={article.title}
-                title={article.title}
-                path={article.path}
-                isInternal={false}
-                headerContent={
-                  <>
-                    {article.description}
-                    <br />
-                    <br />
+              <>
+                <div><small>{article.date}</small></div>
+
+                <Item
+                  key={article.title}
+                  title={article.title}
+                  path={article.path}
+                  isInternal={false}
+                  headerContent={
                     <div className={projectsStyles.tagContainer}>
                       {article.tags.map(tag => (
                         <small
@@ -32,9 +31,9 @@ const Projects = () => {
                         ></small>
                       ))}
                     </div>
-                  </>
-                }
-              />
+                  }
+                />
+              </>
             )
           })}
         </div>
