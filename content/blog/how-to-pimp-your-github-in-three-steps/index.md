@@ -2,7 +2,7 @@
 title: 'Level Up Your Github Profile Page in 3 Easy Steps'
 description: 'Add a custom .gif to your profile to give it a bit of a buzz'
 date: '2020-07-09'
-tags: '<a target="blank" href="https://hackernoon.com/level-up-your-github-profile-page-in-three-easy-steps-7fz3et3" class="btn btn-outline-secondary"><strong>PUBLISHED ON HACKERNOON 📰⌚</strong></a>_GitHub_Profile_tutorial'
+tags: 'hide-post_<a target="blank" href="https://hackernoon.com/level-up-your-github-profile-page-in-three-easy-steps-7fz3et3" class="btn btn-outline-secondary"><strong>PUBLISHED ON HACKERNOON 📰⌚</strong></a>_GitHub_Profile_tutorial'
 ---
 <a href="https://hackernoon.com/level-up-your-github-profile-page-in-three-easy-steps-7fz3et3" class="btn btn-outline-secondary"><strong>READ IT ON HACKERNOON 📰⌚</strong></a>
 <br/>

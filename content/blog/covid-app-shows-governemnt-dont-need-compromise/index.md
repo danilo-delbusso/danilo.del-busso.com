@@ -2,7 +2,7 @@
 title: "Italy Launches Contact Tracing App; Proves We Shouldn't Compromise On Privacy?"
 description: 'Immuni is safe, and private. The Italian government is showing the world how data privacy can be achieved by any entity'
 date: '2020-06-17'
-tags: '<a target="blank" href="https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp" class="btn btn-outline-secondary"><strong>PUBLISHED ON HACKERNOON 📰⌚</strong></a>_COVID-19_Contact Tracing_Government_Data Privacy'
+tags: 'hide-post_<a target="blank" href="https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp" class="btn btn-outline-secondary"><strong>PUBLISHED ON HACKERNOON 📰⌚</strong></a>_COVID-19_Contact Tracing_Government_Data Privacy'
 ---
 <a href="https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp" class="btn btn-outline-secondary"><strong>READ IT ON HACKERNOON 📰⌚</strong></a>
 <br/>

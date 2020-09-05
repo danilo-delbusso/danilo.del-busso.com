@@ -2,7 +2,7 @@
 title: 'Dragonboard 410c Ethernet to Wi-Fi Access Point with VPN'
 description: 'How to set up a WiFi VPN Access Point using a Qualcomm Dragonboard 410c development board'
 date: '2019-04-24'
-tags: 'Dragonboard 410c_tutorial_VPN_openvpn_tutorial'
+tags: 'Dragonboard 410c_VPN_openvpn_tutorial'
 ---
 This set of commands and instructions are what I needed to do in order to set up a Wi-Fi access point on a Qualcomm Dragonboard 410c with a NordVPN connection.
 

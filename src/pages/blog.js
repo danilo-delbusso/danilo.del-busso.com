@@ -11,6 +11,9 @@ const Blog = ({ data }) => {
   const content = (
     <>
       {posts.map(({ node }) => {
+        if(node.frontmatter.tags.includes('hide-post')){
+          return <></>;
+        }
         const title = node.frontmatter.title || node.fields.slug
         return (
           <Item
