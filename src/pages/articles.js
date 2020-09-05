@@ -8,10 +8,10 @@ import Item from "../components/item"
 const Projects = () => {
   return (
     <Layout>
-      <SEO title="Published Stuff" />
+      <SEO title="Articles" />
       <section className="page-section">
         <div className="container">
-          <h2 className="title">Published Stuff</h2>
+          <h2 className="title">Articles</h2>
           {articles.map(article => {
             return (
               <Item
