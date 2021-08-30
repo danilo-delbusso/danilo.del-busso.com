@@ -10,7 +10,7 @@ module.exports = {
     },
     description: `Danilo Del Busso's Dev Blog & Portfolio`,
     siteUrl: `https://www.danilo.del-busso.com`,
-    image: `https://github.com/danilo-delbusso/danilo-delbusso.me/blob/master/content/assets/profile-pic-sm.jpg`,
+    image: `https://github.com/danilo-delbusso/danilo-delbusso.me/blob/master/content/assets/profile-pic.jpg`,
     social: {
       twitter: `danilo_delbusso`,
       github: `danilo-delbusso`,
