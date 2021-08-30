@@ -131,29 +131,17 @@ const BlogIndex = ({ data }) => {
             }}
           />
           <p>
-            Hi! My name is {author.name}. I'm a full stack software engineer
-            from Italy <img height="17" alt="italy flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo-delbusso.me/36178a67861056684145e11b2606a51728248210/content/assets/it.svg" />, currently graduating as a Computer Science student at{" "}
-            <a href="https://www.kcl.ac.uk/">King's College London</a> <img height="17" alt="uk flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo-delbusso.me/36178a67861056684145e11b2606a51728248210/content/assets/uk.svg" />.
+            Hi! My name is {author.name}. I'm a software engineer
+            from Italy <img height="17" alt="italy flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo-delbusso.me/36178a67861056684145e11b2606a51728248210/content/assets/it.svg" />, currently working in the UK <img height="17" alt="uk flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo-delbusso.me/36178a67861056684145e11b2606a51728248210/content/assets/uk.svg" /> at <a href='https://www.citrix.com'>Citrix</a> and as a self-employed <a href='https://reactjs.org'>React</a> developer.
           </p>
-
           <p>
-            {" "}
-            I have professional experience as a full stack{" "}
-            <a href="https://dotnet.microsoft.com/">.NET</a> developer
-          </p>
-
-          <p>
-            My preferred programming language is JavaScript, but I am also adept
-            in C# and Java. I am experienced in creating fullstack webapps with
-            Oracle based SQL, C# and ASP.NET. In addition, I am versed with
-            creating full stack web applications using React.js and Express.
+            My daily work comprises of working on the <a href='https://github.com/xenserver'>Citrix Hypervisor</a> and its interfaces. I also actively maintain internal React tools for small businesses.
           </p>
           <div className={indexStyles.socialIcons}>
             <Social />
           </div>
         </div>
       </section>
-
       <section className={indexStyles.contactSection}>
         <div className="container">
           <h2>Send a message</h2>
@@ -169,9 +157,9 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
+    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
-        fixed(width: 80, height: 80) {
+        fixed(width: 100, height: 100) {
           ...GatsbyImageSharpFixed
         }
       }
