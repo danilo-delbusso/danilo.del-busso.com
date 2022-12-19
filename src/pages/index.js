@@ -132,7 +132,7 @@ const BlogIndex = ({ data }) => {
           />
           <p>
             Hi! My name is {author.name}. I'm a software engineer
-            from Italy <img height="17" alt="italy flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo.del-busso.com/36178a67861056684145e11b2606a51728248210/content/assets/it.svg" />, currently working in the UK <img height="17" alt="uk flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo-delbusso.me/36178a67861056684145e11b2606a51728248210/content/assets/uk.svg" /> at <a href='https://www.citrix.com'>Citrix</a> and as a self-employed <a href='https://reactjs.org'>React</a> developer.
+            from Italy <img height="17" alt="italy flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo.del-busso.com/36178a67861056684145e11b2606a51728248210/content/assets/it.svg" />, currently working in the UK <img height="17" alt="uk flag" src="https://raw.githubusercontent.com/danilo-delbusso/danilo-delbusso.me/36178a67861056684145e11b2606a51728248210/content/assets/uk.svg" /> at <a href='https://www.xenserver.com'>XenServer</a> and as a self-employed <a href='https://reactjs.org'>React</a> developer.
           </p>
           <p>
             I am <a href='https://github.com/xenserver'>XenServer</a> developer, working on <a href='https://github.com/xenserver/xenadmin'>XenCenter</a> and the <a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen'>XenServer SDKs</a>.
