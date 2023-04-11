@@ -1,0 +1,38 @@
+[module]
+  [module.hugoVersion]
+    extended=true
+    min = "0.41.0"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'rrt'
+    tabWidth = 4
+
+[params]
+  favicon = "logo-192.png"
+  [params.theme_config]
+    appearance = "auto"
+    back_home_text = "<- Home"
+    date_format = ":date_long"
+
+theme = 'nostyleplease'
+baseURL = 'https://danilo.del-busso.com'
+languageCode = 'en-GB'
+title = 'Danilo Del Busso'
+enableEmoji = true
