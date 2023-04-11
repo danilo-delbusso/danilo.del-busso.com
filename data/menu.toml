@@ -1,0 +1,51 @@
+[[entries]]
+    title = "I'm a software engineer, currently working at <a href='https://www.xenserver.com/'>XenServer</a>."
+    [[entries.entries]]
+    title = "Check out what I'm up to on <img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' width='20px' height='20px' style='display : inline; vertical-align: middle; margin-bottom: 3px;'> <a href='https://github.com/danilo-delbusso'>GitHub</a>."
+    [[entries.entries]]
+    title = "Connect with me on <img src='https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg' width='20px' height='20px' style='display : inline; vertical-align: middle; margin-bottom: 3px;'> <a target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/danilo-delbusso/'>LinkedIn</a>."
+    [[entries.entries]]
+    title = "Follow my <img src='https://upload.wikimedia.org/wikipedia/commons/3/39/Logo_of_Twitter%2C_Inc..svg' width='20px' height='20px' style='display : inline; vertical-align: middle; margin-bottom: 3px;'> <a target='_blank' rel='noreferrer' href='https://twitter.com/danilo_delbusso'>Twitter</a>."
+[[entries]]
+title = "all posts"
+  [entries.post_list]
+  limit = 5
+  show_more = true
+  show_more_text = "See archive..."
+  show_more_url = "posts"
+
+[[entries]]
+    title = "experience"
+    [[entries.entries]]
+    title = "<a href='https://www.xenserver.com/'>XenServer</a> Software Engineer"
+    [[entries.entries]]
+    title = "<a href='https://www.citrix.com/'>Citrix</a> Graduate Software Engineer"
+    [[entries.entries.entries]]
+    title = "Maintainer of <a href='https://github.com/xenserver/xenadmin'>XenCenter</a>, a cross-platform GUI for XenServer."
+    [[entries.entries.entries]]
+    title = "Maintainer of <a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen'>XenServer SDKs</a> a set of libraries for interacting with XenServer in the following languages:"
+    [[entries.entries.entries.entries]]
+    title = "<a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen/csharp'>C#</a> <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/C_Sharp_wordmark.svg/240px-C_Sharp_wordmark.svg.png' width='20px' height='20px' style='display : inline; vertical-align: middle; margin-bottom: 3px;'>"
+    [[entries.entries.entries.entries]]
+    title = "<a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen/java'>Java</a> <img src='https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' width='20px' height='20px' style='display : inline; vertical-align: middle; margin-bottom: 3px;'>"
+    [[entries.entries.entries.entries]]
+    title = "<a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen/powershell'>PowerShell</a> <img src='https://upload.wikimedia.org/wikipedia/commons/2/2f/PowerShell_5.0_icon.png' width='20px' height='20px' style='display : inline; vertical-align: middle; margin-bottom: 3px;'>"
+    [[entries.entries.entries.entries]]
+    title = "<a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen/c'>C</a> <img src='https://upload.wikimedia.org/wikipedia/commons/3/35/The_C_Programming_Language_logo.svg' width='20px' height='20px' style='display : inline; vertical-align: middle; margin-bottom: 3px;'>"
+    [[entries.entries]]
+    title = "<img style='display : inline; vertical-align: middle; margin-bottom: 3px;' src='https://upload.wikimedia.org/wikipedia/commons/f/f4/BMW_logo_%28gray%29.svg' height='20px' width='20px' />  <a href='https://bmwgroup.com/'>BMW Group</a> Software Engineer Intern"
+    [[entries.entries.entries]]
+    title = "Maintainer and main developer of several internal web apps."
+    [[entries.entries.entries]]
+    title = "Built internal web app to support manufacturing of ventilators during the COVID-19 pandemic."
+    [[entries.entries.entries]]
+    title = "Ran workshops on data cleaning, naturalization, architectural design patterns, and JavaScript."
+
+[[entries]]
+    title = "hackathon projects"
+    [[entries.entries]]
+    title = "(1st 🥇)<a href='https://github.com/lukakralj/easyNakup'>easy nákup</a> Dragonboard 410c-based app for elderly users in remote areas. It recognizes text and facilitates online shopping, empowering local businesses to compete without the added costs of online portals."
+    [[entries.entries]]
+    title = "(1st 🥇)<a href='https://github.com/danilo-delbusso/alpaca'>alpaca</a> An application that creates a summary of lecture contents by merging audio from a video with text from a PDF. This tool is designed to help students revise lectures more efficiently."
+    [[entries.entries]]
+    title = "(3rd 🥉)<a href='https://github.com/danilo-delbusso/trafficK'>trafficK</a> A train dwell time visual diagnostic tool using SWR dwelling time."
