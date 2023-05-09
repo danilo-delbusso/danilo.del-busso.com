@@ -5,10 +5,10 @@
   {{ if .IsPage }} <meta name="description" content="{{ .Summary }}">  {{ end }}
 
   <title>
-    {{ if not .IsHome }}
-     Danilo Del Busso
+    {{ if .IsPage  }}
+      {{ .Title }}
     {{ else }}
-      {{ $.Site.Title }}
+        Danilo Del Busso
     {{ end }}
   </title>
 
