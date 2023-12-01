@@ -21,9 +21,9 @@ title = "all posts"
     [[entries.entries]]
     title = "<a href='https://www.citrix.com/'>Citrix</a> Graduate Software Engineer"
     [[entries.entries.entries]]
-    title = "Maintainer of <a href='https://github.com/xenserver/xenadmin'>XenCenter</a>, a cross-platform GUI for XenServer."
+    title = "Maintainer of <a href='https://github.com/xenserver/xenadmin'>XenCenter</a>, the Windows management console for XenServer."
     [[entries.entries.entries]]
-    title = "Maintainer of <a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen'>XenServer SDKs</a> a set of libraries for interacting with XenServer in the following languages:"
+    title = "Maintainer of the <a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen'>XenServer SDKs</a>, tools for programmatic interaction and management of XenServer. In the following languages:"
     [[entries.entries.entries.entries]]
     title = "<a href='https://github.com/xapi-project/xen-api/tree/master/ocaml/sdk-gen/csharp'>C#</a> <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/C_Sharp_wordmark.svg/240px-C_Sharp_wordmark.svg.png' width='20px' height='20px' style='display : inline; vertical-align: middle; margin-bottom: 3px;'>"
     [[entries.entries.entries.entries]]
