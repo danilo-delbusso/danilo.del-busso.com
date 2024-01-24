@@ -1,9 +1,3 @@
----
-title: "Binding Controls With Oracle Database using MVVM Design Pattern in ASP.NET"
-description: "How to create ASP.NET controls that bind data from an Oracle Database using MVVM"
-date: "2020-07-03"
-tags: "ASP.NET_tutorial_MVVM_Oracle_.NET_ObjectDataSource"
----
 [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) is a popular design pattern amongst .NET developers to achieve a clear separation of concerns and facilitate test driven development (TDD).
 
 While MVVM is mainly used together with really powerful databinding mechanisms (like the ones in [WPF](https://en.wikipedia.org/wiki/Windows_Presentation_Foundation)), it is possible to use it and take advantage of it while developing for the web.
@@ -22,11 +16,11 @@ We will be fetching data using the [OLE DB](https://docs.microsoft.com/en-us/dot
 
 Our query will return a `DataTable` object in this format:
 
-| ID | NAME     |
-|----|----------|
-| 1  | London   |
-| 2  | Rome     |
-| 3  | New York |
+| ID  | NAME     |
+| --- | -------- |
+| 1   | London   |
+| 2   | Rome     |
+| 3   | New York |
 
 <br/>
 
@@ -47,6 +41,7 @@ namespace Project.DL
     }
 }
 ```
+
 we will be adding a `GetDropDownData()` method which will return the data as such:
 
 ```csharp
@@ -107,6 +102,7 @@ namespace Project.BL
 Now on to the juciest part. We will create a `<asp:DropDownList />` control and bind it to an instance of `PageBL.cs` via a `<asp:ObjectDataSource />`.
 
 #### Connect the View with its View Model
+
 In `Page.aspx.cs`
 
 ```csharp
@@ -133,9 +129,10 @@ Let's add the `<asp:ObjectDataSource />` to the `Page.aspx` file
                 ID="odsDDL"
                 SelectMethod="GetDropDownData"
                 TypeName="Projet.BL.ProjectBL"
-                OnObjectCreating="odsDDL_ObjectCreating">              
+                OnObjectCreating="odsDDL_ObjectCreating">
             </asp:ObjectDataSource>
 ```
+
 When the `OnObjectCreating` method is called, we will be assigning an instanciated object of `PageBL` so that the View can call the View Model object.
 
 To do so we add the event method to `Page.aspx.cs` like so:
@@ -147,13 +144,12 @@ To do so we add the event method to `Page.aspx.cs` like so:
         }
 ```
 
-
 #### Bind the Control
 
 We can now bind the `<asp:DropDownList />` control to the ViewModel and populate it using the MVVM pattern.
 
 ```xml
-<asp:DropDownList runat="server" 
+<asp:DropDownList runat="server"
                 ID="ddl"
                 DataSourceID="odsDDL"
                 DataTextField="NAME"

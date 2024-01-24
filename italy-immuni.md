@@ -1,14 +1,8 @@
----
-title: "Italy Launches Contact Tracing App; Proves We Shouldn't Compromise On Privacy?"
-description: 'Immuni is safe, and private. The Italian government is showing the world how data privacy can be achieved by any entity'
-date: '2020-06-17'
-tags: '<a target="blank" href="https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp" class="btn btn-outline-secondary"><strong>PUBLISHED ON HACKERNOON 📰⌚</strong></a>_COVID-19_Contact Tracing_Government_Data Privacy'
----
 <a href="https://hackernoon.com/italy-launches-contact-tracing-app-proves-we-shouldnt-compromise-on-privacy-u24a3upp" class="btn btn-outline-secondary"><strong>READ IT ON HACKERNOON 📰⌚</strong></a>
 <br/>
 
 ![](https://raw.githubusercontent.com/danilo-delbusso/blog/master/content/blog/covid-app-shows-governemnt-dont-need-compromise/covid-article.jpg)
-Starting on the 15th of June, the Italian Government enabled nationwide downloads of their Contact Tracing app, [Immuni](https://www.immuni.italia.it/ "https://www.immuni.italia.it/"). The app allows for effortless tracing of SARS-Cov-2 virus.
+Starting on the 15th of June, the Italian Government enabled nationwide downloads of their Contact Tracing app, [Immuni](https://www.immuni.italia.it/ 'https://www.immuni.italia.it/'). The app allows for effortless tracing of SARS-Cov-2 virus.
 
 Though built in less than two months under heavy government guidance and scrutiny, it has been praised for its security and data protection policies.
 
@@ -26,7 +20,7 @@ Smartphones with Immuni that come into each other's vicinity exchange IDs and re
 
 ## Main Data Privacy Concerns and Solutions
 
-The [official documentation](https://github.com/immuni-app/immuni-documentation "https://github.com/immuni-app/immuni-documentation") extensively covers the security measures put in place by the developers. Some of the main issues faced by the team are however more relevant to this type of application.
+The [official documentation](https://github.com/immuni-app/immuni-documentation 'https://github.com/immuni-app/immuni-documentation') extensively covers the security measures put in place by the developers. Some of the main issues faced by the team are however more relevant to this type of application.
 
 ## Packet Sniffing
 
@@ -42,7 +36,7 @@ Fake contagion data has the same size and structure as the valid one, and the se
 
 Exposure Notifications are implemented at Google Play Services level. This ensures the exchange of Bluetooth packets when the app isn't active. However, that app wakes up periodically to check the data it's received and potentially warn the user. For this Immuni uses WorkManager which, thanks to a local database, guarantees the correct execution of these periodic tasks.
 
-However, as one of the developers pointed out in an [AMAA on Reddit](https://www.reddit.com/r/italy/comments/h9c53o/siamo_bending_spoons_e_abbiamo_sviluppato_lapp/ "https://www.reddit.com/r/italy/comments/h9c53o/siamo_bending_spoons_e_abbiamo_sviluppato_lapp/") (in Italian):
+However, as one of the developers pointed out in an [AMAA on Reddit](https://www.reddit.com/r/italy/comments/h9c53o/siamo_bending_spoons_e_abbiamo_sviluppato_lapp/ 'https://www.reddit.com/r/italy/comments/h9c53o/siamo_bending_spoons_e_abbiamo_sviluppato_lapp/') (in Italian):
 
 > Despite all these precautions, some models of Android devices adopt task management policies in the background that could compromise the execution of the aforementioned tasks. Google and various manufacturers are working to resolve the problem and therefore [we are] optimistic that this issue will be addressed soon.
 
@@ -52,13 +46,13 @@ Immuni signs the cryptographic keys it downloads from its Exposure Reporting Ser
 
 The associated public keys are shared with Apple and Google and are used by mobile devices to verify the downloaded data and to ensure its authenticity and integrity.
 
-Analytics of epidemiological information is also a potential issue as they are key for guiding the response of the Italian National Healthcare System. Immuni seeks to guarantee the integrity of the data it stores while applying measures to preserve user privacy. Since on Android no technology identifies genuine devices without compromising user privacy, only iPhone devices connect to the Analytics Service via the [DeviceCheck framework](https://developer.apple.com/documentation/devicecheck "https://developer.apple.com/documentation/devicecheck").
+Analytics of epidemiological information is also a potential issue as they are key for guiding the response of the Italian National Healthcare System. Immuni seeks to guarantee the integrity of the data it stores while applying measures to preserve user privacy. Since on Android no technology identifies genuine devices without compromising user privacy, only iPhone devices connect to the Analytics Service via the [DeviceCheck framework](https://developer.apple.com/documentation/devicecheck 'https://developer.apple.com/documentation/devicecheck').
 
 ## Conclusion
 
 When first announced, the app gained considerable traction from the press: the idea of contact tracing seemed promising, but raised many doubts on the topic of the protection of personal data. The Italian public opinion shifted towards discarding an option that would mimic the intrusive South Korean architecture.
 
-The Government has already provided important reassurances on its website and committed early on in releasing the source code on [GitHub](https://github.com/immuni-app "https://github.com/immuni-app"). Furthermore, the investigation by [Mobisec](https://mobisec.com/ "https://mobisec.com/"), an Italian company which since 2017 certifies the mobile security of important companies, has further confirmed the particular attention to the issue of privacy.
+The Government has already provided important reassurances on its website and committed early on in releasing the source code on [GitHub](https://github.com/immuni-app 'https://github.com/immuni-app'). Furthermore, the investigation by [Mobisec](https://mobisec.com/ 'https://mobisec.com/'), an Italian company which since 2017 certifies the mobile security of important companies, has further confirmed the particular attention to the issue of privacy.
 
 Mobisec’s study aimed at identifying security and privacy concerns highlighted an overall quality level above average
 
