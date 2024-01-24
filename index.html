@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.min.js"></script>
+    <title>Danilo Del Busso</title>
+</head>
+<body>
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="button close"></div>
+            <div class="button minimize"></div>
+            <div class="button maximize"></div>
+        </div>
+        <div class="terminal-content">
+            <p id="terminal-title">
+                Hi! I'm Danilo. Click the items below to navigate the site.
+                <br />
+                You can also type <span class="command">ls</span> to see files and folders, <span class="command">cat</span> to read a file, and <span class="command">cd</span> to navigate directories.
+                <br />
+                Type <span class="command">help</span> to see a list of commands.
+            </p>
+            <p id="user-input">
+                <p class="command">
+                    <span id="current-folder">~</span>&nbsp;&gt;&nbsp;
+                    <span id="input"></span>
+                    <span class="cursor">_</span>
+                </p>
+            </p>
+
+            <p id="terminal-output">
+                
+            </p>
+            <p id="file-output">
+
+            </p>
+       </div>
+       <div class="terminal-footer">
+        <span onclick="goBack()" id="back-button" class="back-button disabled"><-- back</span>
+        <span onclick="listFiles()" class="list-files-button">list files</span>
+    </div>
+    </body>
+
+    <script src="script.js"></script>
+</html>

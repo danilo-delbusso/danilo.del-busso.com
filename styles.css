@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #292929;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-window {
+    background-color: #1e1e1e;
+    border: 2px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%; /* Default to 100% for very small screens */
+    max-width: 1000px; /* Maximum width is 600px */
+    width: 97%; /* 80% of the screen width, if it's larger than 600px */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+    background-color: #333;
+    padding: 8px;
+    display: flex;
+}
+
+.terminal-footer {
+    background-color: #333;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-button {
+    color: #ffd700;
+    text-align: left;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.list-files-button {
+    color: #ffd700;
+    text-align: left;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.close {
+    background-color: #ff5f56;
+}
+.minimize {
+    background-color: #ffbd2e;
+}
+.maximize {
+    background-color: #27c93f;
+}
+
+.terminal-content {
+    padding: 16px;
+    color: #fff;
+    line-height: 1.4;
+    max-height: 600px; /* Set the maximum height as per your requirement */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.cursor {
+    color: #fff; /* Cursor color */
+    animation: blink 1s infinite;
+}
+
+.disabled {
+    color: #1e1e1e;
+    cursor: not-allowed;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.ls-output {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-item,
+.folder-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #333;
+    justify-content: space-between;
+}
+
+.file-item:hover,
+.folder-item:hover {
+    background-color: #333;
+}
+
+.file-name {
+    color: #27c93f; /* Green color for files */
+    font-size: 14px;
+    text-align: 'left';
+}
+
+.file-date {
+    color: white;
+    font-size: 14px;
+    text-align: right;
+}
+
+.folder-name {
+    color: #4e8bf5; /* Blue color for folders */
+    font-size: 14px;
+}
+
+.command {
+    color: #ffd700; /* Yellow color for files */
+    font-size: 14px;
+}
+
+.error {
+    color: #d700ff; /* Green color for files */
+    font-size: 14px;
+}
+
+a {
+    color: #d700ff; /* Green color for files */
+}
