@@ -36,8 +36,8 @@ class Node {
 
 const root = new Node('~')
 
-const paths = new Node('paths')
-paths.addChildren(
+const posts = new Node('posts')
+posts.addChildren(
     new Node('italy-immuni.md', '2020-06-17', true),
     new Node('mvvm.md', '2020-07-03', true),
     new Node('dragonboard.md', '2019-04-24', true)
@@ -46,7 +46,7 @@ paths.addChildren(
 root.addChildren(
     new Node('about.md', '', true),
     new Node('experience.md', '', true),
-    paths
+    posts
 )
 
 //#endregion
